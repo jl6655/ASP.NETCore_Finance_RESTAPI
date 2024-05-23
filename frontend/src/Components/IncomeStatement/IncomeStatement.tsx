@@ -1,10 +1,88 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { CompanyIncomeStatement } from '../../company';
+import { useOutletContext } from 'react-router-dom';
+import { getIncomeStatement } from '../../api';
+import Table from '../Table/Table';
+import Spinner from '../Spinner/Spinner';
 
 type Props = {}
 
+const configs = [
+  {
+    label: "Date",
+    render: (company: CompanyIncomeStatement) => company.date,
+  },
+  {
+    label: "Total Revenue",
+    render: (company: CompanyIncomeStatement) => company.revenue,
+  },
+  {
+    label: "Cost of Revenue",
+    render: (company: CompanyIncomeStatement) => company.costOfRevenue,
+  },
+  {
+    label: "Depreciation",
+    render: (company: CompanyIncomeStatement) => company.depreciationAndAmortization,
+  },
+  {
+    label: "Operating Income",
+    render: (company: CompanyIncomeStatement) => company.operatingIncome,
+  },
+  {
+    label: "Income before taxes",
+    render: (company: CompanyIncomeStatement) => company.incomeBeforeTax,
+  },
+  {
+    label: "Net Income",
+    render: (company: CompanyIncomeStatement) => company.netIncome,
+  },
+  {
+    label: "Net Income Ratio",
+    render: (company: CompanyIncomeStatement) => company.netIncomeRatio,
+  },
+  {
+    label: "Earnings Per Share",
+    render: (company: CompanyIncomeStatement) => company.eps,
+  },
+  {
+    label: "Earnings Per Diluted",
+    render: (company: CompanyIncomeStatement) => company.epsdiluted,
+  },
+  {
+    label: "Gross Profit Ratio",
+    render: (company: CompanyIncomeStatement) => company.grossProfitRatio,
+  },
+  {
+    label: "Operating Income Ratio",
+    render: (company: CompanyIncomeStatement) => company.operatingIncomeRatio,
+  },
+  {
+    label: "Income Before Taxes Ratio",
+    render: (company: CompanyIncomeStatement) => company.incomeBeforeTaxRatio,
+  },
+];
+
 const IncomeStatement = (props: Props) => {
+  const ticker = useOutletContext<string>(); 
+  const [incomeStatement, setIncomeStatement] = useState<CompanyIncomeStatement[]>();
+  useEffect(() => {
+    const incomeStatementFetch = async () => {
+      const result = await getIncomeStatement(ticker);
+      setIncomeStatement(result!.data);
+    };
+    incomeStatementFetch();
+  }, []); // Without the '[]' at the end, 'useEffect' would make thousands of api calls and ruin data.
+
   return (
-    <div>IncomeStatement</div>
+    <>
+      {incomeStatement ? (
+        <>
+          <Table config={configs} data={incomeStatement} />
+        </>
+      ) : (
+      <Spinner />
+    ) }
+    </>
   )
 }
 
