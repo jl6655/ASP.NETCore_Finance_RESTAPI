@@ -10,38 +10,38 @@ type Props = {}
 const tableConfig = [
   {
     label: "Market Cap",
-    render: (company: CompanyKeyMetrics) => company .marketCapTTM,
+    render: (company: CompanyKeyMetrics) => company.marketCapTTM,
     subTitle: "Total value of all a company's shares of stock",
   },
   {
     label: "Current Ratio",
     render: (company: CompanyKeyMetrics) => company.currentRatioTTM,
-    subTitle: "Measures the companies ability to pay short term debt obligations",
+    subTitle:
+      "Measures the companies ability to pay short term debt obligations",
   },
   {
     label: "Return On Equity",
     render: (company: CompanyKeyMetrics) => company.roeTTM,
-    subTitle: "Return on equity is the measure of a company's net income divided by its shareholder's equity",
+    subTitle:
+      "Return on equity is the measure of a company's net income divided by its shareholder's equity",
   },
   {
     label: "Return On Assets",
     render: (company: CompanyKeyMetrics) => company.returnOnTangibleAssetsTTM,
-    subTitle: "Return on assets is the measure of how effective a company is using its assets",
-  },
-  {
-    label: "Return On Assets",
-    render: (company: CompanyKeyMetrics) => company.returnOnTangibleAssetsTTM,
-    subTitle: "Return on assets is the measure of how effective a company is using its assets",
+    subTitle:
+      "Return on assets is the measure of how effective a company is using its assets",
   },
   {
     label: "Free Cashflow Per Share",
     render: (company: CompanyKeyMetrics) => company.freeCashFlowPerShareTTM,
-    subTitle: "A measure of a company's financial flexibility that is determined by dividing free cash flow by the total number of shares outstanding",
+    subTitle:
+      "Return on assets is the measure of how effective a company is using its assets",
   },
   {
     label: "Book Value Per Share TTM",
     render: (company: CompanyKeyMetrics) => company.bookValuePerShareTTM,
-    subTitle: "Book value per share indicates a firm's net asset value (total assets - total liabilities) on per share basis",
+    subTitle:
+      "Book value per share indicates a firm's net asset value (total assets - total liabilities) on per share basis",
   },
   {
     label: "Dividend Yield TTM",
@@ -49,19 +49,22 @@ const tableConfig = [
     subTitle: "Shows how much a company pays each year relative to stock price",
   },
   {
-    label: "Capex Per Share TTM",
+    label: "Capital Expenditure(Capex) Per Share TTM",
     render: (company: CompanyKeyMetrics) => company.capexPerShareTTM,
-    subTitle: "Capex is used by a company to acquire, upgrade, and maintain physical assets",
+    subTitle:
+      "Capex is used by a company to acquire, upgrade, and maintain physical assets",
   },
   {
     label: "Graham Number",
     render: (company: CompanyKeyMetrics) => company.grahamNumberTTM,
-    subTitle: "This is the upperbound of the price range that a defensive investor should pay for a stock",
+    subTitle:
+      "This is the upper-bound of the price range that a defensive investor should pay for a stock",
   },
   {
     label: "PE Ratio",
     render: (company: CompanyKeyMetrics) => company.peRatioTTM,
-    subTitle: "PE ratio tells you how much you are paying for each dollar of earnings",
+    subTitle:
+      "This is the upper-bound of the price range that a defensive investor should pay for a stock",
   },
 ];
 

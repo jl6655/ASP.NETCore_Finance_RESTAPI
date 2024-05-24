@@ -17,19 +17,20 @@ const configs = [
     render: (company: CompanyIncomeStatement) => company.revenue,
   },
   {
-    label: "Cost of Revenue",
+    label: "Cost Of Revenue",
     render: (company: CompanyIncomeStatement) => company.costOfRevenue,
   },
   {
     label: "Depreciation",
-    render: (company: CompanyIncomeStatement) => company.depreciationAndAmortization,
+    render: (company: CompanyIncomeStatement) =>
+      company.depreciationAndAmortization,
   },
   {
     label: "Operating Income",
     render: (company: CompanyIncomeStatement) => company.operatingIncome,
   },
   {
-    label: "Income before taxes",
+    label: "Income Before Taxes",
     render: (company: CompanyIncomeStatement) => company.incomeBeforeTax,
   },
   {
@@ -47,10 +48,6 @@ const configs = [
   {
     label: "Earnings Per Diluted",
     render: (company: CompanyIncomeStatement) => company.epsdiluted,
-  },
-  {
-    label: "Gross Profit",
-    render: (company: CompanyIncomeStatement) => company.grossProfit,
   },
   {
     label: "Gross Profit Ratio",
