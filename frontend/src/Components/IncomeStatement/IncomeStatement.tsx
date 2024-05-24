@@ -49,6 +49,10 @@ const configs = [
     render: (company: CompanyIncomeStatement) => company.epsdiluted,
   },
   {
+    label: "Gross Profit",
+    render: (company: CompanyIncomeStatement) => company.grossProfit,
+  },
+  {
     label: "Gross Profit Ratio",
     render: (company: CompanyIncomeStatement) => company.grossProfitRatio,
   },
