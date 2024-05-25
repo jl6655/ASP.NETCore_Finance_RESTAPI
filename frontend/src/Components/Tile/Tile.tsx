@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 type Props = {
-    title: string;
-    subTitle: string;
-}
+  title: string;
+  subTitle: string;
+};
 
 const Tile = ({ title, subTitle }: Props) => {
   return (
@@ -21,7 +21,7 @@ const Tile = ({ title, subTitle }: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Tile
+export default Tile;
