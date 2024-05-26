@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,6 +17,6 @@ namespace api.Models
         public decimal LastDiv { get; set; }
         public string Industry { get; set; } = string.Empty;
         public long MarketCap { get; set; }
-        public List<Comment> Comments { get; set; } = new List<Comment>
+        public List<Comment> Comments { get; set; } = new List<Comment>();
     }
 }
