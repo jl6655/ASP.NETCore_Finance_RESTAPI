@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.Stock;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,37 @@ namespace api.Controllers
         {
             _stockRepo = stockRepo;
             _context = context;
+        }
+
+        // 'IActionResult' is a fancy wrapper for when multiple action result return types are possible (HTTP status codes)
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
+        {
+            if(!ModelState.IsValid) 
+                return BadRequest(ModelState); // Data Validation
+                
+            var stocks = await _stockRepo.GetAllAsync(query);
+
+            var stockDto = stocks.Select(s => s.ToStockDto()); // 'Select' => map
+
+            return Ok(stocks);
+        }
+
+        [HttpGet] 
+        [Route("{id:int}")] // '{id}' => Model binding
+        public async Task<IActionResult> GetById([FromRoute] int id) 
+        {
+            if(!ModelState.IsValid) 
+                return BadRequest(ModelState); // Data Validation
+
+            var stock = await _stockRepo.GetByIdAsync(id);
+
+            if(stock == null) 
+            {
+                return NotFound();
+            }
+
+            return Ok(stock.ToStockDto());
         }
 
         [HttpPost]
@@ -53,36 +85,7 @@ namespace api.Controllers
             return NoContent();
         }
 
-        // 'IActionResult' is a fancy wrapper for when multiple action result return types are possible (HTTP status codes)
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            if(!ModelState.IsValid) 
-                return BadRequest(ModelState); // Data Validation
-                
-            var stocks = await _stockRepo.GetAllAsync();
-
-            var stockDto = stocks.Select(s => s.ToStockDto()); // 'Select' => map
-
-            return Ok(stocks);
-        }
-
-        [HttpGet] 
-        [Route("{id:int}")] // '{id}' => Model binding
-        public async Task<IActionResult> GetById([FromRoute] int id) 
-        {
-            if(!ModelState.IsValid) 
-                return BadRequest(ModelState); // Data Validation
-
-            var stock = await _stockRepo.GetByIdAsync(id);
-
-            if(stock == null) 
-            {
-                return NotFound();
-            }
-
-            return Ok(stock.ToStockDto());
-        }
+        
 
         [HttpPut]
         [Route("{id:int}")]
