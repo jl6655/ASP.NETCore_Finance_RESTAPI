@@ -15,6 +15,7 @@ namespace api.Models
         public DateTime CreatedOn { get; set; } = DateTime.Now;
         public int? StockId { get; set; } // Why do we need both 'StockId' and 'Stock'? 
         public Stock? Stock { get; set; } // <- Navigation property (Ex: Stock.CompanyName or Stock.Id)
-
+        public string AppUserId { get; set; }
+        public AppUser appUser { get; set; }
     }
 }
