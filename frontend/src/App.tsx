@@ -3,14 +3,17 @@ import './App.css';
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from './Components/Navbar/Navbar';
 import { ToastContainer } from 'react-toastify';
+import { UserProvider } from './Context/useAuth'; // App only works when user is logged in, hence the UserProvider wrapper
 
 
 function App() {
   return (
     <>
-      <Navbar /> 
-      <Outlet />
-      <ToastContainer />
+      <UserProvider>
+        <Navbar /> 
+        <Outlet />
+        <ToastContainer />
+      </UserProvider>
     </>
   );
 }
