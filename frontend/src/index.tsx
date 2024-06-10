@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-console.log(searchCompanies("tsla"));
+// console.log(searchCompanies("tsla"));
 
 root.render(
   <React.StrictMode>
