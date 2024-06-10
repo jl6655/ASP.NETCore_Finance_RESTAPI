@@ -8,6 +8,7 @@ import IncomeStatement from "../Components/IncomeStatement/IncomeStatement";
 import DesignPage from "../Pages/DesignPage/DesignGuide";
 import BalanceSheet from "../Components/BalanceSheet/BalanceSheet";
 import CashFlowStatement from "../Components/CashFlowStatement/CashFlowStatement";
+import LoginPage from "../Pages/LoginPage/LoginPage";
 
 export const router = createBrowserRouter([
     {
@@ -15,18 +16,19 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [
             { path: "", element: <HomePage /> },
+            { path: "login", element: <LoginPage /> },
             { path: "search", element: <SearchPage /> },
             { path: "design-guide", element: <DesignPage /> },
             { 
               path: "company/:ticker", 
               element: <CompanyPage />, 
               children: [
-              { path: "company-profile", element: <CompanyProfile /> },
-              { path: "income-statement", element: <IncomeStatement /> },
-              { path: "balance-sheet", element: <BalanceSheet /> },
-              { path: "cashflow-statement", element: <CashFlowStatement /> }
+                { path: "company-profile", element: <CompanyProfile /> },
+                { path: "income-statement", element: <IncomeStatement /> },
+                { path: "balance-sheet", element: <BalanceSheet /> },
+                { path: "cashflow-statement", element: <CashFlowStatement /> }
               ],
-            }
-        ]
-    }
-])
+            },
+        ],
+    },
+]);
